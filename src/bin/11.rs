@@ -1,4 +1,4 @@
-use std::{fs::read_to_string};
+use std::fs::read_to_string;
 
 fn main() {
     let input = read_to_string("input/input11.txt").unwrap();
@@ -28,25 +28,25 @@ fn expand(input :&str) -> Vec<bool>{
 
 fn solve(input: &str, columns: Vec<bool>, zoom : usize) -> usize {
     let mut galaxies : Vec<(usize, usize)> = Vec::new();
-    let mut currentLine: usize = 0;
-    let mut currentCol: usize = 0;
+    let mut current_line: usize = 0;
+    let mut current_col: usize = 0;
 
     for (i, l) in input.split("\n").into_iter().enumerate(){
         let mut newLine : Vec<char> = Vec::new();
         for (j, char) in l.chars().enumerate(){
 
-            if char == '#' { galaxies.push((currentLine, currentCol)) }
+            if char == '#' { galaxies.push((current_line, current_col)) }
             
-            else if !columns[j] { currentCol += zoom -1 }
+            else if !columns[j] { current_col += zoom -1 }
 
             newLine.push(char);
-            currentCol += 1
+            current_col += 1
         }
         if !newLine.contains(&'#') { 
-            currentLine += zoom -1;
+            current_line += zoom -1;
             }
-        currentLine += 1;
-        currentCol = 0;
+        current_line += 1;
+        current_col = 0;
     };
     
     galaxies.reverse();

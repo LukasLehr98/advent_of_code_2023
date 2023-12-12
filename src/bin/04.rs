@@ -4,11 +4,6 @@ use std::fs::read_to_string;
 pub fn main() {
     let binding = read_to_string("input/input4.txt").unwrap();
     let input : Vec<&str>= binding.lines().collect();
-
-    for i in &input {
-        println!("Hello{}", i);
-    }
-
     let mut sum = 0;
     let mut copies = vec![1; input.len()];
 
@@ -39,5 +34,5 @@ pub fn main() {
     }
 
     let copy_count: i32 = copies.iter().map(|x| *x).sum();
-    println!("Copies: {}, Sum: {}", copy_count, sum);
+    println!("Day 4: Part 1: {}, Part 2: {}", sum, copy_count);
 }

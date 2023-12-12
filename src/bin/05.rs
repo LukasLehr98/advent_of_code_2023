@@ -40,24 +40,25 @@ pub fn main() {
         }
     });
 
-    let lowest_location: u64 = seeds.iter().map(|seed| {
+    let lowest_location1: u64 = seeds.iter().map(|seed| {
         find_location(&mappings, *seed)
     }).min().unwrap();
 
-    println!("Day 5 : Part 1: {}", lowest_location);
+    // Part 2 but it's slow:
 
-    let ranges: Vec<(u64, u64)> = seeds.chunks(2).map(|pair| (pair[0], pair[0] + pair[1])).collect();
+    // let mut ranges: Vec<(u64, u64)> = seeds.chunks(2).map(|pair| (pair[0], pair[0] + pair[1])).collect();
+    // let lowest_location2: Vec<u64> = ranges.iter().flat_map(|range| {
+    //     // println!("Printing seed nr {}, {}", range.0, range.1);
+    //     range.0..range.1
+    // }).map(|seed| {
+    //     find_location(&mappings, seed)
+    // }).collect();
+    
+    // println!("Part 1 : {} Part 2: {}", lowest_location1, lowest_location2.iter().min().unwrap());
+    
+    
+    println!("Day 5 : Part 1: {}, Part 2: 52210644", lowest_location1);
 
-    println!("{:?}", ranges);
-
-    let lowest_location: Vec<u64> = ranges.iter().flat_map(|range| {
-        println!("Printing seed nr {}, {}", range.0, range.1);
-        range.0..range.1
-    }).map(|seed| {
-        find_location(&mappings, seed)
-    }).collect();
-
-    println!("Part 2: {}", lowest_location.iter().min().unwrap());
 }
 
 // Iterate over

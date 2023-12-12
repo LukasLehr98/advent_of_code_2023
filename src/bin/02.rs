@@ -39,7 +39,7 @@ pub fn main() {
 
     }).map(|num| num).sum();
 
-    println!("Day 2: Part1: {}, Part2: {}", part1, part2);
+    println!("Day 2: Part 1: {}, Part 2: {}", part1, part2);
 }
 
 

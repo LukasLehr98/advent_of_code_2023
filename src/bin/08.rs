@@ -3,7 +3,6 @@ use std::collections::HashMap;
 pub fn main(){
     let input = read_to_string("input/input8.txt").unwrap();
     let part1 = part1(input.as_str());
-    
     let part2 = part2(input.as_str());
 
     println!("Day 8: Part 1: {}  Part 2: {}", part1, part2);
