@@ -68,10 +68,10 @@ fn get_valid_numbers(prev: Option<&Vec<char>>, current : Vec<char>, next: Option
                 }
                 valid = true;
                 let mut numbers: Vec<i32> = get_surrounding_numbers(Some(current.clone()), i);
-                let prevNumbers : Vec<i32> = get_surrounding_numbers(prev.cloned(), i);
-                let mut next_numbers : Vec<i32> = get_surrounding_numbers(next.cloned(), i);
+                let prev_numbers : Vec<i32> = get_surrounding_numbers(prev.cloned(), i);
+                let next_numbers : Vec<i32> = get_surrounding_numbers(next.cloned(), i);
 
-                numbers.extend(prevNumbers);
+                numbers.extend(prev_numbers);
                 numbers.extend(next_numbers);
 
                 if numbers.len() == 2 {
@@ -100,7 +100,7 @@ fn get_surrounding_numbers(line : Option<Vec<char>>, index : usize) -> Vec<i32>{
         match char {
             c if c.is_digit(10) => {
                 current.push(*c);
-                if (!valid){
+                if !valid{
                     let min = i.checked_sub(current.len());
                     valid = (min.unwrap_or(0) <= index) && (i + 1 >= index)
                 }
@@ -114,7 +114,7 @@ fn get_surrounding_numbers(line : Option<Vec<char>>, index : usize) -> Vec<i32>{
             }
         }
     }
-    if (valid && (current.len() != 0)) {
+    if valid && (current.len() != 0) {
         acc.push(current.chars().collect::<String>().parse::<i32>().unwrap())
     }
     acc
