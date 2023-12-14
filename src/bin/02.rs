@@ -12,9 +12,9 @@ pub fn main() {
             .unwrap().1.split(|c| c == ':' || c == ';' || c == ',' || c == '\n');
         let game_number : i32 = parts.next().unwrap().trim().parse().unwrap();
 
-        let mut minRed = 1;
-        let mut minGreen = 1;
-        let mut minBlue = 1;
+        let mut min_red = 1;
+        let mut min_green = 1;
+        let mut min_blue = 1;
 
         for part in parts {
             let tokens: Vec<&str> = part.trim().split_whitespace().collect();
@@ -22,19 +22,19 @@ pub fn main() {
             let color = tokens[1];
 
             match color {
-                "red" => if quantity > minRed {
-                     minRed = quantity 
+                "red" => if quantity > min_red {
+                     min_red = quantity 
                     }
-                "green" => if quantity >= minGreen { 
-                    minGreen = quantity 
+                "green" => if quantity >= min_green { 
+                    min_green = quantity 
                 }
-                "blue" => if quantity >= minBlue { 
-                    minBlue = quantity }
+                "blue" => if quantity >= min_blue { 
+                    min_blue = quantity }
                 _ => ()
             }
         };        
-        let power = minRed * minGreen * minBlue;
-        if is_game_possible((minRed, minGreen, minBlue)) { part1 += game_number } 
+        let power = min_red * min_green * min_blue;
+        if is_game_possible((min_red, min_green, min_blue)) { part1 += game_number } 
         power
 
     }).map(|num| num).sum();

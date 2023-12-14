@@ -1,7 +1,6 @@
 use std::fs::read_to_string;
 
 pub fn main() {
-    // let lines: Lines<BufReader<File>> = BufReader::new(File::open("./input3.txt").unwrap()).lines();
     let input = read_to_string("input/input3.txt").unwrap();
 
     let char_vectors: Vec<Vec<char>> = input.split("\n").map(|line| line.chars().collect() ).collect();
@@ -19,7 +18,7 @@ pub fn main() {
 
 fn get_valid_numbers(prev: Option<&Vec<char>>, current : Vec<char>, next: Option<&Vec<char>>) -> (i32, i32){
     let mut acc = 0;
-    let mut gearAcc = 0;
+    let mut gear_acc = 0;
     let mut num :String = String::from("");
     let mut valid : bool = false;
     
@@ -76,7 +75,7 @@ fn get_valid_numbers(prev: Option<&Vec<char>>, current : Vec<char>, next: Option
 
                 if numbers.len() == 2 {
                     let numbers = (numbers.get(0).unwrap(), numbers.get(1).unwrap());
-                    gearAcc += numbers.0 * numbers.1
+                    gear_acc += numbers.0 * numbers.1
                 }
             }
         }
@@ -84,7 +83,7 @@ fn get_valid_numbers(prev: Option<&Vec<char>>, current : Vec<char>, next: Option
     if !num.is_empty() && valid{
         acc += num.chars().collect::<String>().parse::<i32>().unwrap();
     }
-    (acc, gearAcc)
+    (acc, gear_acc)
 }
 
 fn get_surrounding_numbers(line : Option<Vec<char>>, index : usize) -> Vec<i32>{

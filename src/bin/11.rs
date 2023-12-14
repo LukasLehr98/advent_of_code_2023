@@ -12,7 +12,7 @@ fn main() {
 fn expand(input :&str) -> Vec<bool>{
     let mut columns: Vec<bool> = Vec::new();
 
-    for (i, l) in input.split("\n").into_iter().enumerate(){
+    for (_i, l) in input.split("\n").into_iter().enumerate(){
         if columns.len() == 0 {
             columns = vec![false; l.len()];
           }
@@ -31,7 +31,7 @@ fn solve(input: &str, columns: Vec<bool>, zoom : usize) -> usize {
     let mut current_line: usize = 0;
     let mut current_col: usize = 0;
 
-    for (i, l) in input.split("\n").into_iter().enumerate(){
+    for (_i, l) in input.split("\n").into_iter().enumerate(){
         let mut new_line : Vec<char> = Vec::new();
         for (j, char) in l.chars().enumerate(){
 
