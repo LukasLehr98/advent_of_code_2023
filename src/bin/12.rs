@@ -8,7 +8,7 @@ fn main() {
     let results = input.lines().map(|line| {
         let (springs, rest) = line.split_once(" ").unwrap();
         let sizes = rest.split(",").map(|size| {
-            println!("{}", size);
+            // println!("{}", size);
             size.parse::<usize>().unwrap()
         }).collect::<Vec<_>>();
 
