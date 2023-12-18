@@ -52,14 +52,6 @@ fn solve(input : &str) -> (i32, i32){
 
         part1 += old_score;
         part2 += score
-
-        // let vert = get_vertical(&pattern);
-        // let horizontal = get_horizontal(&pattern) * 100;
-
-        // println!("Vert : {}", vert);
-        // println!("Horizontal: {}", horizontal);
-
-        // horizontal + vert
     });
 
     (part1, part2)

@@ -8,15 +8,11 @@ fn main() {
     let results = input.lines().map(|line| {
         let (springs, rest) = line.split_once(" ").unwrap();
         let sizes = rest.split(",").map(|size| {
-            // println!("{}", size);
             size.parse::<usize>().unwrap()
         }).collect::<Vec<_>>();
 
         let p1 = count_ways(&mut memo, springs.as_bytes(), None, &sizes);
         memo.clear();
-
-        // Example springs: .##????.?.#.?????
-        // Example sizes 4 1 1 3 1
 
         let new_springs = (0..5).map(|_| springs).join("?");
         let new_sizes = (0..5).flat_map(|_| &sizes).copied().collect::<Vec<_>>();
@@ -40,7 +36,6 @@ fn count_ways(memo: &mut HashMap<(usize, usize, usize), usize>, springs: &[u8], 
         return 0;
     }
 
-    // Key: .len() of current row of springs, count of consecutive damaged strings, the remaining amount of groups of damaged springs
     let key = (springs.len(), within.unwrap_or(0), remaining.len());
     if let Some(&result) = memo.get(&key) {
         return result;

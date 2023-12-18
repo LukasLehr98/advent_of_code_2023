@@ -23,7 +23,7 @@ make directions enum
 
 for each sign, define out-directions based on in-direciton
 */
-
+#[derive(PartialEq, Clone, Copy, Eq)]
 enum Direction {
     Right,
     Left,
@@ -31,7 +31,17 @@ enum Direction {
     Down
 }
 
-fn reflect(mirror: char, direction : Direction) -> (Direction, Direction){
+
+fn get_coords_from_direction(coords: (usize, usize), direction : Direction) -> (usize, usize){
+    match direction {
+        Direction::Down => (coords.0+1, coords.1),
+        Direction::Up => (coords.0-1, coords.1),
+        Direction::Right => (coords.0, coords.1+1),
+        Direction::Left => (coords.0, coords.1-1),
+    }
+}
+
+fn reflect(mirror: char, direction : &Direction) -> (Direction, Direction){
     match mirror {
         '|' => match direction {
             Direction::Down => (Direction::Down, Direction::Down),
@@ -62,7 +72,6 @@ fn reflect(mirror: char, direction : Direction) -> (Direction, Direction){
             Direction::Up => (Direction::Up, Direction::Up),
             Direction::Left => (Direction::Left, Direction::Left),
             Direction::Right => (Direction::Right, Direction::Right)
-
         }
     }
 }
