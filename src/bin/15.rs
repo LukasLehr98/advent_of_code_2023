@@ -70,7 +70,6 @@ fn part2(input : &str) -> u32{
         }
         value += focusing_power
     }
-
     value
 }
 
@@ -81,7 +80,6 @@ fn get_hash(input :&str) -> u32{
         value = value * 17;
         value = value % 256 
     });
-
     value
 }
 

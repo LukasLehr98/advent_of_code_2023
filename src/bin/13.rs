@@ -1,4 +1,5 @@
-use std::{fs::read_to_string};
+use std::fs::read_to_string;
+
 fn main(){
     let input = read_to_string("input/input13.txt").unwrap();
     let solution = solve(input.as_str());
