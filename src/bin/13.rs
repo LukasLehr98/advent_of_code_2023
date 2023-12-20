@@ -30,7 +30,6 @@ fn solve(input : &str) -> (i32, i32){
                 
                 let vert = get_vertical(&pattern, old_vert.try_into().unwrap());
                 if vert > 0 && vert != old_vert {
-                    println!("Vert {}", vert);
                     score = vert;
                 }
 

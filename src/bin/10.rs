@@ -6,7 +6,7 @@ fn main() {
     let temp = solve(input.as_str());
 
 
-    println!("Day 10: Part1 {}, Part2 {}", temp.0, temp.1);
+    println!("Day 10: Part 1: {}, Part 2: {}", temp.0, temp.1);
 
 }
 

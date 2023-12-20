@@ -6,7 +6,7 @@ fn main() {
     let part1 = solve(input.as_str(), cols.clone(), 2);
     let part2 = solve(input.as_str(), cols.clone(), 1000000);
 
-    println!("part 1: {}, Part 2: {}", part1, part2);
+    println!("Day 11: Part 1: {}, Part 2: {}", part1, part2);
 }
 
 fn expand(input :&str) -> Vec<bool>{
