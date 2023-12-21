@@ -92,7 +92,7 @@ fn get_energized_tiles(starts : Vec<Vec<Beam>>, grid: Vec<Vec<char>>, printing: 
        }
    }
    
-   let trimmed : HashSet<(usize, usize)>= visited.clone().into_iter().map(|x| {
+   let trimmed : HashSet<(usize, usize)>= visited.iter().map(|x| {
        x.0
    }).collect();
 

@@ -5,7 +5,13 @@ fn main() {
     let input = read_to_string("input/input6.txt").unwrap();
     let (times_string, distances_string) = input.split_once("\n").unwrap();
 
-    let times : Vec<i64> = times_string.split_once(':').unwrap().1.trim().split(' ').filter(|x| !x.is_empty()).map(|x| x.trim().parse::<i64>().unwrap()).collect();
+    let times : Vec<i64> = times_string.
+        split_once(':').unwrap()
+        .1.trim()
+        .split(' ').filter(|x| !x.is_empty())
+        .map(|x| x.trim().parse::<i64>().unwrap())
+        .collect();
+    
     let distances : Vec<i64> = distances_string.split_once(':').unwrap().1.trim().split(' ').filter(|x| !x.is_empty()).map(|x| x.trim().parse::<i64>().unwrap()).collect();
     
     let part1 = get_wins(times, distances);

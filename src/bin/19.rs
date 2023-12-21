@@ -25,7 +25,6 @@ fn part1(parts: Vec<Part>, workflows: HashMap<&str, Vec<Instruction>>) -> u32{
     let sum = parts.into_iter().map(|part| {
         let mut local_key: String = String::from("in");
         while local_key != "A" && local_key != "R"{
-            println!("{}", local_key);
             
             let flow = workflows.get(local_key.clone().as_str()).unwrap().clone();
             for i in 0..flow.len(){
@@ -46,11 +45,9 @@ fn part1(parts: Vec<Part>, workflows: HashMap<&str, Vec<Instruction>>) -> u32{
         }
 
         if local_key == "A" {
-            println!("Accepted");
             accepted.push(part);
             part.get_part_total()
         } else {
-            println!("Declined");
 
             declined.push(part);
             0
@@ -116,7 +113,7 @@ fn parse(input : &str) -> (Vec<Part>, HashMap<&str, Vec<Instruction>>){
 
     let mut workflow_map: HashMap<&str, Vec<Instruction>> = HashMap::new();
     workflow_list.lines().for_each(|line| {
-        let (name, mut instructions) = line.split_once("{").unwrap();
+        let (name, instructions) = line.split_once("{").unwrap();
         let instructions = &instructions.replace("}", "");
 
         let flow = instructions.split(",").map(| instruction | {
@@ -134,7 +131,7 @@ fn parse(input : &str) -> (Vec<Part>, HashMap<&str, Vec<Instruction>>){
                     }
             } else {
                 Instruction {
-                    destination : instruction.clone().to_string(),
+                    destination : instruction.to_string(),
                     condition: None
                 }
             }
@@ -275,20 +272,3 @@ impl PartRange{
         (self.x.max - self.x.min +1) * (self.m.max -self.m.min +1) * (self.a.max - self.a.min +1) * (self.s.max - self.s.min +1) 
     }
 }
-
-
-/*
-    make range for each letter in part
-    if range.key == "a" return range product
-
-    every time i meet a number {
-        if range not in accepted range, go to next instruction
-        else if all of range in accepted send to new workflow
-        else if some of range is in accepted{
-            split range in two{
-                non-accepted part runs to next instruction with same key
-                accepted part runs function with new key
-            }
-        }
-    }
-*/
